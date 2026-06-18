@@ -1,0 +1,78 @@
+.contactPage {
+  min-height: 100vh;
+  background: #fcf8f2;
+}
+
+.hero {
+  text-align: center;
+  padding: 100px 20px 60px;
+}
+
+.hero h1 {
+  font-size: 4rem;
+  color: #735832;
+  font-family: "Cormorant Garamond", serif;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  color: #777;
+  font-size: 1.1rem;
+}
+
+.contactCard {
+  max-width: 800px;
+  margin: 0 auto 80px;
+  padding: 0 20px;
+}
+
+.infoBox {
+  background: white;
+  border-radius: 15px;
+  padding: 50px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.infoBox h3 {
+  text-align: center;
+  color: #735832;
+  font-size: 2rem;
+  margin-bottom: 40px;
+  font-family: "Cormorant Garamond", serif;
+}
+
+.item {
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+.item span {
+  display: block;
+  color: #735832;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.item p {
+  margin: 0;
+  color: #444;
+  font-size: 1.05rem;
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.8rem;
+  }
+
+  .infoBox {
+    padding: 30px;
+  }
+
+  .infoBox h3 {
+    font-size: 1.8rem;
+  }
+}

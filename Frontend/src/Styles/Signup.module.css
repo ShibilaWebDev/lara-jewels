@@ -1,0 +1,168 @@
+.signupPage {
+  width: 100%;
+  min-height: 100vh;
+  background: #f5f5f3;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 40px 60px;
+  gap: 50px;
+}
+
+.leftSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 420px;
+}
+
+.logo {
+  font-size: 110px;
+  font-weight: 700;
+  letter-spacing: -8px;
+  margin-bottom: 70px;
+  color: #453115;
+}
+
+.formContainer h2 {
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 40px;
+  letter-spacing: 2px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.inputGroup label {
+  font-size: 13px;
+  color: #777;
+  letter-spacing: 1px;
+}
+
+.inputGroup input {
+  border: none;
+  border-bottom: 1px solid #999;
+  background: transparent;
+  outline: none;
+  padding: 12px 0;
+  font-size: 15px;
+}
+
+.passwordBox {
+  position: relative;
+}
+
+.eyeIcon {
+  position: absolute;
+  right: 0;
+  top: 12px;
+  cursor: pointer;
+}
+
+.signupBtn,
+.resetBtn {
+  width: 100%;
+  height: 48px;
+  border: 1px solid #111;
+  background: transparent;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.signupBtn:hover,
+.resetBtn:hover {
+  background: #111;
+  color: white;
+}
+
+.rightSection {
+  flex: 1.5;
+  display: flex;
+  justify-content: center;
+}
+
+.carousel {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  height: 650px;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  opacity: 0;
+  animation: fade 12s infinite;
+}
+
+.slide:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.slide:nth-child(2) {
+  animation-delay: 4s;
+}
+
+.slide:nth-child(3) {
+  animation-delay: 8s;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+
+  8% {
+    opacity: 1;
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  38% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 992px) {
+  .signupPage {
+    flex-direction: column;
+  }
+
+  .logo {
+    font-size: 80px;
+  }
+}
+
+@media (max-width: 600px) {
+  .logo {
+    font-size: 60px;
+  }
+
+  .carousel {
+    height: 350px;
+  }
+}

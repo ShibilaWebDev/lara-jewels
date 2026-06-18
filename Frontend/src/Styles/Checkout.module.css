@@ -1,0 +1,105 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #faf9f9;
+}
+.checkoutWrapper {
+  flex: 1;
+  max-width: 1200px;
+  margin: 4rem auto;
+  padding: 0 2rem;
+  display: flex;
+  gap: 4rem;
+  width: 100%;
+}
+.formSection {
+  flex: 2;
+}
+.formSection h2 {
+  font-weight: 300;
+  color: #333;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.row {
+  display: flex;
+  gap: 1.5rem;
+}
+.row input {
+  flex: 1;
+}
+.form input[type="text"], .form input[type="email"] {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+.paymentMethods {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.placeOrderBtn {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 1rem;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.orderSummary {
+  flex: 1;
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+  height: fit-content;
+}
+.orderSummary h2 {
+  font-weight: 400;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+.summaryItem {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  color: #666;
+}
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+}
+.emptyCheckout {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.emptyCheckout button {
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  background: #b76e79;
+  color: white;
+  border: none;
+  cursor: pointer;
+}

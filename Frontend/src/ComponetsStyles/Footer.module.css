@@ -1,0 +1,255 @@
+/* Footer.module.css */
+
+.footer {
+  width: 100%;
+  background:#f8f7f5;
+  color: #1f1f1f;
+  overflow: hidden;
+  border-top: 1px solid #f8f7f5;
+}
+
+/* ================= FEATURES ================= */
+
+.features {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 90px 6%;
+  border-bottom: 1px solid #ececec;
+}
+
+.featureBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  color: #1f1f1f;
+}
+
+.featureBox svg {
+  stroke: #8b6b3e;
+}
+
+.featureBox p {
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ================= MARQUEE ================= */
+
+.marquee {
+  width: 100%;
+  overflow: hidden;
+  border-bottom: 1px solid #ececec;
+  padding: 14px 0;
+  background: #fafafa;
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  gap: 70px;
+  animation: scroll 22s linear infinite;
+}
+
+.track span {
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #8b6b3e;
+  font-weight: 500;
+  white-space: nowrap;
+  font-family: "Poppins", sans-serif;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ================= NEWSLETTER ================= */
+
+.newsletter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 80px;
+
+  padding: 120px 6%;
+}
+
+.left {
+  flex: 1;
+}
+
+.left h2 {
+  font-size: 4.2rem;
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 22px;
+
+  font-family: "Cormorant Garamond", serif;
+}
+
+.left p {
+  font-size: 1.05rem;
+  color: #666;
+  line-height: 1.9;
+  max-width: 520px;
+
+  font-family: "Poppins", sans-serif;
+}
+
+.right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ================= INPUT ================= */
+
+.inputBox {
+  width: 100%;
+  max-width: 720px;
+  height: 78px;
+
+  border: 1px solid #d9d9d9;
+  border-radius: 60px;
+
+  background: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 14px 0 32px;
+
+  transition: 0.3s ease;
+}
+
+.inputBox:focus-within {
+  border-color: #8b6b3e;
+}
+
+.inputBox input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+
+  font-size: 1rem;
+  color: #222;
+
+  font-family: "Poppins", sans-serif;
+}
+
+.inputBox input::placeholder {
+  color: #999;
+}
+
+.inputBox button {
+  width: 54px;
+  height: 54px;
+
+  border-radius: 50%;
+  border: none;
+
+  background: #8b6b3e;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.inputBox button:hover {
+  transform: scale(1.05);
+}
+
+/* ================= BOTTOM ================= */
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 35px 6%;
+  border-top: 1px solid #ececec;
+}
+
+.bottom p {
+  font-size: 0.95rem;
+  color: #777;
+  font-family: "Poppins", sans-serif;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.links span {
+  font-size: 0.95rem;
+  color: #777;
+  cursor: pointer;
+  transition: 0.3s ease;
+
+  font-family: "Poppins", sans-serif;
+}
+
+.links span:hover {
+  color: #8b6b3e;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1000px) {
+  .newsletter {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 90px 6%;
+  }
+
+  .right {
+    width: 100%;
+  }
+
+  .inputBox {
+    max-width: 100%;
+  }
+
+  .left h2 {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .features {
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  .left h2 {
+    font-size: 2.5rem;
+  }
+
+  .bottom {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .inputBox {
+    height: 70px;
+  }
+}
