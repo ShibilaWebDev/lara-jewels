@@ -46,7 +46,7 @@ useEffect(() => {
 
 const fetchImages = async () => {
   const res = await axios.get(
-    "http://localhost:3000/auth-page/login-images"
+    `${import.meta.env.VITE_API_URL}/auth-page/login-images`
   );
 
   setImages(res.data);
