@@ -94,58 +94,6 @@
   justify-content: center;
 }
 
-.carousel {
-  position: relative;
-  width: 100%;
-  max-width: 900px;
-  height: 650px;
-  overflow: hidden;
-  border-radius: 20px;
-}
-
-.slide {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-
-  opacity: 0;
-  animation: fade 12s infinite;
-}
-
-.slide:nth-child(1) {
-  animation-delay: 0s;
-}
-
-.slide:nth-child(2) {
-  animation-delay: 4s;
-}
-
-.slide:nth-child(3) {
-  animation-delay: 8s;
-}
-
-@keyframes fade {
-  0% {
-    opacity: 0;
-  }
-
-  8% {
-    opacity: 1;
-  }
-
-  30% {
-    opacity: 1;
-  }
-
-  38% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 0;
-  }
-}
 
 @media (max-width: 992px) {
   .signupPage {
@@ -164,5 +112,191 @@
 
   .carousel {
     height: 350px;
+  }
+}
+.rightSection {
+   flex: 1.5;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rightSection img {
+  width: 100%;
+  max-width: 900px;
+  height: 650px;
+   object-position: center;
+  object-fit: contain;
+  border-radius:30px;
+  
+}
+
+.signupImage {
+  width: 500px;
+  height: 500px;
+  object-fit: cover;
+   
+}
+.imageSection img {
+  width: 100%;
+  max-width: 600px;
+  height: 500px;
+  object-fit: cover;
+
+}
+/* =========================
+   Large Desktop (1400px+)
+========================= */
+@media (min-width: 1400px) {
+  .signupPage {
+    padding: 50px 100px;
+  }
+
+  .rightSection img {
+    max-width: 1000px;
+    height: 700px;
+  }
+}
+
+/* =========================
+   Laptop & Tablet
+========================= */
+@media (max-width: 992px) {
+  .signupPage {
+    flex-direction: column;
+    padding: 30px;
+    gap: 30px;
+  }
+
+  .leftSection {
+    max-width: 100%;
+    width: 100%;
+    align-items: center;
+  }
+
+  .formContainer {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .logo {
+    font-size: 80px;
+    margin-bottom: 30px;
+  }
+
+  .rightSection {
+    width: 100%;
+  }
+
+  .rightSection img {
+    width: 100%;
+    height: 500px;
+    max-width: 700px;
+  }
+}
+
+/* =========================
+   Mobile Devices
+========================= */
+@media (max-width: 768px) {
+  .signupPage {
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .logo {
+    font-size: 60px;
+    letter-spacing: -4px;
+    text-align: center;
+  }
+
+  .formContainer h2 {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .form {
+    gap: 20px;
+  }
+
+  .inputGroup input {
+    font-size: 14px;
+  }
+
+  .signupBtn,
+  .resetBtn {
+    height: 45px;
+  }
+
+  .rightSection img {
+    height: 350px;
+    border-radius: 20px;
+  }
+}
+
+/* =========================
+   Small Mobile
+========================= */
+@media (max-width: 480px) {
+  .signupPage {
+    padding: 15px;
+  }
+
+  .logo {
+    font-size: 48px;
+    margin-bottom: 20px;
+  }
+
+  .formContainer h2 {
+    font-size: 18px;
+    margin-bottom: 25px;
+  }
+
+  .inputGroup label {
+    font-size: 12px;
+  }
+
+  .inputGroup input {
+    padding: 10px 0;
+    font-size: 13px;
+  }
+
+  .signupBtn,
+  .resetBtn {
+    height: 42px;
+    font-size: 13px;
+  }
+
+  .rightSection img {
+    height: 250px;
+    border-radius: 15px;
+  }
+}
+
+/* =========================
+   Extra Small Devices
+========================= */
+@media (max-width: 320px) {
+  .logo {
+    font-size: 40px;
+  }
+
+  .formContainer h2 {
+    font-size: 16px;
+  }
+
+  .rightSection img {
+    height: 200px;
+  }
+}
+@media (max-width: 768px) {
+  .rightSection {
+    display: none;
+  }
+
+  .leftSection {
+    width: 100%;
+    max-width: 100%;
   }
 }

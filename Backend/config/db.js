@@ -1,6 +1,6 @@
 const mongoose=require("mongoose")
 function connection(){
-  mongoose.connect("mongodb://localhost:27017/LARA")
+  mongoose.connect(process.env.DB_API)
 .then(()=>console.log("database connected"))
 .catch((err=>console.log(err)))
 }

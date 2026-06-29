@@ -139,3 +139,50 @@
 .checkoutBtn:hover {
   background-color: #876e4a;
 }
+@media (max-width: 768px) {
+  .cartContent {
+    flex-direction: column;
+  }
+
+  .cartItem {
+    display: flex;
+    flex-direction: row; /* row ആയി നിലനിർത്തുന്നു */
+    align-items: center;
+    gap: 10px;
+  }
+
+  .itemImage {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+  }
+
+  .itemDetails {
+    flex: 1;
+  }
+
+  .itemDetails h3 {
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+
+  .itemPrice {
+    font-size: 13px;
+  }
+
+  .qtyControl {
+    transform: scale(0.9);
+  }
+
+  .itemTotal {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-end;
+    font-size: 14px;
+  }
+
+  .cartSummary {
+    width: 100%;
+  }
+}

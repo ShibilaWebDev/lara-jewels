@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&display=swap');
 /* navbar.module.css */
 
 /* GOOGLE FONT SHOULD BE IMPORTED IN index.css OR index.html */
@@ -349,7 +350,6 @@ body {
   cursor: pointer;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&display=swap');
 
 .logo h1{
   font-family: "Bodoni Moda", serif;
@@ -398,4 +398,18 @@ body {
 .logoutBtn:hover,
 .loginBtn:hover {
   opacity: 0.9;
+}
+@media (max-width: 768px) {
+  .searchWrapper {
+    position: static;
+  }
+
+  .searchInput {
+    position: absolute;
+    top: 150%;
+    left: 30px;
+    right: 10px;
+    width: calc(100% - 20px);
+    transform: none;
+  }
 }

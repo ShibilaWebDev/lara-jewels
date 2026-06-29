@@ -4,8 +4,10 @@ import { FaEyeSlash } from "react-icons/fa";
 import axios from "axios";
 import styles from "../Styles/Signup.module.css";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 function Signup() {
+  const [images, setImages] = useState([]);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -37,6 +39,18 @@ function Signup() {
       alert(err.response?.data?.message || "Server Error");
     }
   }
+
+useEffect(() => {
+  fetchImages();
+}, []);
+
+const fetchImages = async () => {
+  const res = await axios.get(
+    "http://localhost:3000/auth-page/login-images"
+  );
+
+  setImages(res.data);
+};
 
   return (
     <div className={styles.signupPage}>
@@ -105,23 +119,14 @@ function Signup() {
       {/* RIGHT SIDE */}
       <div className={styles.rightSection}>
         <div className={styles.carousel}>
-          <img
-            src="https://images.unsplash.com/photo-1617038220319-276d3cfab638"
-            alt="Jewellery"
-            className={styles.slide}
-          />
-
-          <img
-            src="https://images.unsplash.com/photo-1605100804763-247f67b3557e"
-            alt="Jewellery"
-            className={styles.slide}
-          />
-
-          <img
-            src="https://images.unsplash.com/photo-1617038220319-276d3cfab638"
-            alt="Jewellery"
-            className={styles.slide}
-          />
+        {images.map((img, index) => (
+  <img
+    key={index}
+    src={img}
+    alt=""
+    className={styles.slide}
+  />
+))}
         </div>
       </div>
     </div>

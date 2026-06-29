@@ -1,0 +1,54 @@
+.heroUploadContainer {
+  width: 100%;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.heroUploadContainer h2 {
+  margin-bottom: 25px;
+  color: #472c06;
+  text-align: center;
+}
+
+.uploadBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 180px;
+  border: 2px dashed #c7a66a;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  background: #faf8f4;
+}
+
+.uploadBox input {
+  display: none;
+}
+
+.uploadBox span {
+  color: #666;
+  font-size: 16px;
+  text-align: center;
+}
+
+.uploadBtn {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  background: #472c06;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.uploadBtn:hover {
+  transform: translateY(-2px);
+}

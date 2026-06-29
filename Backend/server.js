@@ -1,15 +1,17 @@
+require("dotenv").config()
 const express =require("express")
 const path = require("path");
 const userRoutes=require("./routes/userRoutes")
 const adminRoutes=require("./routes/adminRoutes")
 const productRouter=require("./routes/productRouter")
+const paymentRoutes=require("./routes/paymentRoutes")
 const cookieParser =require("cookie-parser")
-require("dotenv").config()
 const PORT=process.env.PORT
 const app = express()
 const cartRoutes = require("./routes/cartRoutes");
 const orderRoutes = require("./routes/orderRouter");
-
+const authPageRoutes = require("./routes/authPageRoutes");
+const heroImageRoutes = require("./Routes/heroImage");
 
 const cors=require("cors")
 app.use(cors({origin:'http://localhost:5173',credentials: true}))
@@ -25,7 +27,9 @@ app.use("/admin",adminRoutes)
 app.use("/products",productRouter)
 app.use("/cart", cartRoutes)
 app.use("/orders", orderRoutes);
-
+app.use("/auth-page", authPageRoutes);
+app.use("/hero-image", heroImageRoutes);
+app.use("/api/payment", paymentRoutes);
 app.post("/test", (req, res) => {
   
   res.send("working");

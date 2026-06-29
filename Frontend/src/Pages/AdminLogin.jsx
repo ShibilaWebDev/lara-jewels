@@ -1,48 +1,59 @@
-// AdminLogin.jsx
 import React, { useState } from "react";
 import styles from "../Styles/AdminLogin.module.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function AdminLogin() {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("")
-  const navTo =useNavigate()
+  const [password, setPassword] = useState("");
 
-  async function handleSubmit(e){
+  const navTo = useNavigate();
+
+  async function handleSubmit(e) {
     e.preventDefault();
-   try{
-     const admin ={email,password}
-     const res=await axios.post("http://localhost:3000/users/adminLogin",admin,{withCredentials:true})
-       if(res.data.isLogin){
-        alert(res.data.message)
-        navTo("/admin")
-        
-      }
-   }catch(err){
-    if(err.response){
-      if(err.response.data){
-        alert(err.response.data.message)
-      }else{  
-        alert("internal server error")
-      }
-    } 
-    console.log(err.message);
-    
-   }
 
-   
-  };
+    try {
+      const admin = { email, password };
+
+      const res = await axios.post(
+        "http://localhost:3000/users/adminLogin",
+        admin,
+        {
+          withCredentials: true,
+        }
+      );
+
+      if (res.data.isLogin) {
+        localStorage.setItem("adminLogin", "true");
+
+       Swal.fire({
+  icon: "success",
+  title: "Login Successful",
+  text: res.data.message,
+  confirmButtonColor: "#8B5E3C",
+  background: "#fff",
+  color: "#453115",
+}).then(() => {
+  navTo("/admin");
+});
+      }
+    } catch (err) {
+      if (err.response) {
+        alert(err.response.data.message);
+      } else {
+        alert("Internal Server Error");
+      }
+    }
+  }
 
   return (
     <div className={styles.container}>
       <div className={styles.loginBox}>
-
         <h2>Admin Login</h2>
-        <p>Welcome back Admin 👋</p>
+        <p>Welcome Back Admin 👋</p>
 
         <form onSubmit={handleSubmit}>
-
           <div className={styles.inputGroup}>
             <label>Email</label>
 
@@ -67,10 +78,9 @@ function AdminLogin() {
             />
           </div>
 
-          <button type="submit" className={styles.loginBtn}>
+          <button className={styles.loginBtn}>
             Login
           </button>
-
         </form>
       </div>
     </div>

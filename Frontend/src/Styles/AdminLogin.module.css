@@ -49,13 +49,13 @@
 }
 
 .inputGroup input:focus {
-  border-color: #c9a227;
+  border-color:rgb(65, 20, 20);
 }
 
 .loginBtn {
   width: 100%;
   padding: 12px;
-  background: #c9a227;
+  background: #2e2105;
   color: white;
   border: none;
   border-radius: 8px;
@@ -65,5 +65,5 @@
 }
 
 .loginBtn:hover {
-  background: #a8861f;
+  background: rgb(34, 2, 2);
 }

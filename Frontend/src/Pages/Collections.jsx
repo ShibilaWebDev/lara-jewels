@@ -52,9 +52,10 @@ useEffect(() => {
       ? true
       : p.category.toLowerCase() === filter.toLowerCase();
 
-  const searchMatch =
-    p.name.toLowerCase().includes(searchText.toLowerCase());
-
+const searchMatch =
+  searchText === ""
+    ? true
+    : p.category.toLowerCase() === searchText.toLowerCase();
   return categoryMatch && searchMatch;
 });
 console.log("URL category:", category);

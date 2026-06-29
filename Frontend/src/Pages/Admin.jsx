@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import styles from "../Styles/Admin.module.css";
+import AuthPageImages from "../Components/AuthPageImages";
+import HeroImage from "../Components/HeroImage";
 import {
   LayoutDashboard,
   Package,
@@ -19,6 +21,8 @@ import Dashboard from "../Components/Dashboard";
 import Orders from "../Components/Orders";
 
 function Admin() {
+  const [loginImages, setLoginImages] = useState([]);
+  const [signupImages, setSignupImages] = useState([]);
   const [active, setActive] = useState("dashboard");
   const [users, setUsers] = useState([]);
   const getUsers = async () => {
@@ -39,7 +43,29 @@ function Admin() {
       console.log(error);
     }
   };
+  const saveLoginImages = async () => {
+    try {
+      await axios.put("http://localhost:3000/auth-page/login-images", {
+        images: loginImages,
+      });
 
+      alert("Login images updated");
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const saveSignupImages = async () => {
+    try {
+      await axios.put("http://localhost:3000/auth-page/signup-images", {
+        images: signupImages,
+      });
+
+      alert("Signup images updated");
+    } catch (err) {
+      console.error(err);
+    }
+  };
   return (
     <>
       <Navbar />
@@ -75,8 +101,6 @@ function Admin() {
               Manage products
             </button>
 
-            
-
             <button
               onClick={() => setActive("orders")}
               className={active === "orders" ? styles.activeNav : ""}
@@ -89,13 +113,36 @@ function Admin() {
               <Users size={18} />
               Users
             </button>
+            <button
+              onClick={() => setActive("auth-images")}
+              className={active === "auth-images" ? styles.activeNav : ""}
+            >
+              <Image size={18} />
+              Auth Page Images
+            </button>
+            <button
+              onClick={() => setActive("hero-image")}
+              className={active === "hero-image" ? styles.activeNav : ""}
+            >
+              <Image size={18} />
+              Hero Image
+            </button>
+            <button
+  onClick={() => {
+    localStorage.removeItem("adminLogin");
+    window.location.href = "/adminLogin";
+  }}
+>
+  Logout
+</button>
           </nav>
         </aside>
 
         {active == "add-product" && <AddProduct />}
         {active == "manage-product" && <ManageProducts />}
         {active === "dashboard" && <Dashboard />}
-
+        {active === "auth-images" && <AuthPageImages />}
+        {active === "hero-image" && <HeroImage />}
         {active === "orders" && <Orders />}
         {active === "users" && (
           <div className={styles.usersContainer}>
@@ -131,6 +178,7 @@ function Admin() {
                         >
                           Delete
                         </button>
+                      
                       </td>
                     </tr>
                   ))

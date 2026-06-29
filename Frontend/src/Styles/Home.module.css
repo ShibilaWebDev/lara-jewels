@@ -197,9 +197,23 @@
 }
 
 /* Card */
-.category-card {
-  cursor: pointer;
-  transition: 0.3s ease;
+@media (max-width: 650px) {
+
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .imgBox img {
+    height: 160px; /* mobile image height */
+    border-radius: 18px;
+  }
+
+  .category-card h3 {
+    font-size: 15px;
+    margin-top: 8px;
+  }
 }
 
 /* Image */
@@ -237,9 +251,8 @@
   }
 }
 .featuredSection {
-  padding: 80px 5%;
+  padding: 80px 5% 120px;
 }
-
 .featuredTitle {
   display: flex;
   align-items: center;
@@ -275,4 +288,140 @@
   margin-top: 12px;
   font-size: 18px;
   font-weight: 500;
+}
+/* Swiper Container */
+.featuredSwiper {
+  padding-bottom: 50px;
+}
+
+/* Pagination Dots */
+.featuredSwiper :global(.swiper-pagination) {
+  bottom: 0 !important;
+}
+
+.featuredSwiper :global(.swiper-pagination-bullet) {
+  width: 10px;
+  height: 10px;
+  background: #999;
+  opacity: 1;
+  margin: 0 5px !important;
+}
+
+.featuredSwiper :global(.swiper-pagination-bullet-active) {
+  background: #472c06;
+}
+
+/* Smooth Image Hover */
+.featuredCard img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 20px;
+  transition: transform 0.5s ease;
+}
+
+.featuredCard:hover img {
+  transform: scale(1.05);
+}
+.featuredSwiper {
+  padding-bottom: 120px;
+  overflow: visible !important;
+}
+.featuredSwiper :global(.swiper-pagination) {
+  bottom: -50px !important;
+}
+.imgBox {
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+  cursor: pointer;
+}
+
+/* image zoom effect */
+.imgBox img {
+  width: 100%;
+  height: 430px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+/* overlay hidden initially */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+
+  opacity: 0;
+  transform: translateY(10px);
+  transition: 0.4s ease;
+}
+
+/* hover effect */
+.imgBox:hover img {
+  transform: scale(1.1);
+}
+
+.imgBox:hover .overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.overlay h3 {
+  color: white;
+  font-size: 1.8rem;
+  font-family: "Cormorant Garamond", serif;
+}
+
+.overlay button {
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: none;
+  background: white;
+  color: black;
+  cursor: pointer;
+}
+@media (max-width: 650px) {
+  .imgBox img {
+    aspect-ratio: 1/1;
+    height: auto;
+  }
+}
+@media (max-width: 650px) {
+
+  .featuredSection {
+    padding: 40px 4% 80px;
+  }
+
+  .featuredTitle h2 {
+    font-size: 20px;
+  }
+
+  .featuredCard img {
+    height: 220px;
+    border-radius: 18px;
+  }
+
+  .featuredCard h3 {
+    font-size: 16px;
+    margin-top: 8px;
+  }
+
+  .featuredSwiper {
+    padding-bottom: 60px;
+  }
+
+  .featuredSwiper :global(.swiper-pagination) {
+    bottom: -10px !important;
+  }
+}
+.featuredSwiper :global(.swiper-pagination-bullet:nth-child(n+4)) {
+  display: none !important;
+}
+.featuredSwiper :global(.swiper-pagination) {
+  bottom: -35px !important;
 }

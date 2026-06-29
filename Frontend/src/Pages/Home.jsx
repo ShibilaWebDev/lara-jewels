@@ -11,6 +11,8 @@ import Earrings from "../assets/CollectionPng/Earrings.png";
 import axios from "axios";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -19,6 +21,8 @@ function Home() {
   const navTo = useNavigate();
   const [categories, setCategories] = useState([]);
   const [featuredProducts, setFeaturedProducts] = useState([]);
+  const [heroImage, setHeroImage] = useState("");
+  const { addToCart } = useContext(CartContext);
   const envUrl = import.meta.env.VITE_API_URL || "http://localhost:8080";
 
   useEffect(() => {
@@ -47,7 +51,7 @@ function Home() {
           (item) => item.status === "featured",
         );
 
-        console.log("Featured Products:", featured,"HEY");
+        console.log("Featured Products:", featured, "HEY");
 
         setFeaturedProducts(featured);
       } catch (error) {
@@ -56,9 +60,17 @@ function Home() {
     };
     fetchProducts();
   }, [envUrl]);
-useEffect(()=>{
-console.log(featuredProducts)
-},[featuredProducts])
+  useEffect(() => {
+    console.log(featuredProducts);
+  }, [featuredProducts]);
+  useEffect(() => {
+    axios
+      .get(`${envUrl}/hero-image`)
+      .then((res) => {
+        setHeroImage(res.data.image);
+      })
+      .catch(console.error);
+  }, []);
   return (
     <div className={style.home}>
       <Navbar />
@@ -70,7 +82,7 @@ console.log(featuredProducts)
 
           <p>
             Elegant and stylish jewelry collection designed for modern women.
-            Discover premium necklaces and timeless collections.
+            Discover the finest pieces from our collections and explore all that we offer.
           </p>
 
           <button onClick={() => navTo("/collections")}>Shop Now</button>
@@ -78,8 +90,12 @@ console.log(featuredProducts)
 
         <div className={style["hero-image"]}>
           <img
-            src="https://images.pexels.com/photos/13924051/pexels-photo-13924051.jpeg"
-            alt="necklace"
+            src={
+              heroImage
+                ? `${envUrl}${heroImage}`
+                : "https://images.pexels.com/photos/13924051/pexels-photo-13924051.jpeg"
+            }
+            alt="Hero"
           />
         </div>
       </section>
@@ -94,15 +110,22 @@ console.log(featuredProducts)
                 ? cat.imageUrl[0]
                 : `${envUrl}${cat.imageUrl[0]}`
               : "https://via.placeholder.com/400";
+
             return (
               <div
-                key={cat.category}
-                className={style["category-card"]}
-                onClick={() => navTo(`/collections/${cat.category}`)}
-              >
-                <img src={imageSrc} alt={cat.category} />
-                <h3>{cat.category}</h3>
-              </div>
+  key={cat.category}
+  className={style["category-card"]}
+  onClick={() => navTo(`/collections/${cat.category}`)}
+>
+  <div className={style.imgBox}>
+    <img src={imageSrc} alt={cat.category} />
+
+    <div className={style.overlay}>
+      <h3>{cat.category}</h3>
+      <button>Explore</button>
+    </div>
+  </div>
+</div>
             );
           })}
         </section>
@@ -115,28 +138,61 @@ console.log(featuredProducts)
         </div>
 
         <Swiper
-          slidesPerView={5}
-          spaceBetween={25}
-          pagination={{ clickable: true }}
-          loop={true}
-          autoplay={{
-            delay: 3000,
-            disableOnInteraction: false,
-          }}
-          modules={[Pagination, Autoplay]}
-        >
+  slidesPerView={5}
+  spaceBetween={25}
+  loop={true}
+  autoplay={{
+    delay: 1,
+    disableOnInteraction: false,
+  }}
+  speed={4000}
+  pagination={{
+    clickable: true,
+  }}
+  modules={[Pagination, Autoplay]}
+  className={style.featuredSwiper}
+  breakpoints={{
+    0: {
+      slidesPerView: 2,
+      spaceBetween: 15,
+    },
+    768: {
+      slidesPerView: 3,
+      spaceBetween: 20,
+    },
+    1024: {
+      slidesPerView: 5,
+      spaceBetween: 25,
+    },
+  }}
+>
           {featuredProducts.map((product) => {
+            console.log(product);
             const imageSrc = product.imageUrl?.[0]?.startsWith("http")
               ? product.imageUrl[0]
               : `${envUrl}${product.imageUrl?.[0]}`;
 
             return (
-              <SwiperSlide key={product._id}>
-                <div className={style.featuredCard}>
-                  <img src={imageSrc} alt={product.name} />
-                  <h3>{product.name}</h3>
-                </div>
-              </SwiperSlide>
+            <SwiperSlide key={product._id}>
+  <div
+    className={style.featuredCard}
+    onClick={() => {
+      const slug = product.name
+        .trim()
+        .toLowerCase()
+        .replace(/\s+/g, "-");
+
+      navTo(`/collections/${product.category}/${slug}`, {
+        state: {
+          id: product._id,
+        },
+      });
+    }}
+  >
+    <img src={imageSrc} alt={product.name} />
+    <h3>{product.name}</h3>
+  </div>
+</SwiperSlide>
             );
           })}
         </Swiper>

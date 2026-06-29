@@ -6,18 +6,19 @@ import loginImage3 from "../assets/CollectionPng/Ring.png";
 import { useContext } from "react";
 import { CartProvider } from "../context/CartContext";
 import { CartContext } from "../context/CartContext";
-
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useEffect } from "react";
 
 import { FaEyeSlash } from "react-icons/fa";
 import { IoEye } from "react-icons/io5";
-import { useNavigate } from "react-router-dom";
 
 function Login() {
   const { checkLogin } = useContext(CartContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [images, setImages] = useState([]);
   const navTo = useNavigate();
 
   async function handleSubmit(e) {
@@ -63,6 +64,17 @@ function Login() {
       console.log(err.message);
     }
   }
+  useEffect(() => {
+  fetchImages();
+}, []);
+
+const fetchImages = async () => {
+  const res = await axios.get(
+    "http://localhost:3000/auth-page/login-images"
+  );
+
+  setImages(res.data);
+};
 
   return (
     <div className={styles.loginPage}>
@@ -117,6 +129,12 @@ function Login() {
             <button type="reset" className={styles.resetBtn}>
               RESET
             </button>
+            <p className={styles.signupText}>
+              Don't have an account?{" "}
+              <Link to="/signup" className={styles.signupLink}>
+                Sign Up
+              </Link>
+            </p>
           </form>
         </div>
       </div>
@@ -124,13 +142,16 @@ function Login() {
       {/* RIGHT SIDE IMAGE */}
       {/* RIGHT SIDE CAROUSEL */}
       <div className={styles.rightSection}>
-        <div className={styles.carousel}>
-          <img src={loginImage1} alt="fashion" className={styles.slide} />
-
-          <img src={loginImage2} alt="jewellery" className={styles.slide} />
-
-          <img src={loginImage3} alt="ornaments" className={styles.slide} />
-        </div>
+       <div className={styles.imageContainer}>
+  {images.map((img, index) => (
+    <img
+      key={index}
+      src={img}
+      alt={`Login ${index}`}
+      className={styles.loginImage}
+    />
+  ))}
+</div>
       </div>
     </div>
   );

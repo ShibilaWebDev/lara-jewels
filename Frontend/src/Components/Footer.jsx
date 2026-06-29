@@ -60,7 +60,7 @@ function Footer() {
 
       {/* BOTTOM */}
       <div className={styles.bottom}>
-        <p>LaraJewellery.com</p>
+        <p>© 2026 laraJewels.com</p>
 
         <div className={styles.links}>
         </div>

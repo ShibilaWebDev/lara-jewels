@@ -1,16 +1,14 @@
 import React from "react";
 import Navbar from "../Components/Navbar";
 import styles from "../Styles/Contact.module.css";
+import Footer from "../Components/Footer";
 
 function Contact() {
   return (
     <div className={styles.contactPage}>
       <Navbar />
 
-      <div className={styles.hero}>
-        <h1>Contact Us</h1>
-        <p>We're here to help you with any questions about LARA Jewels.</p>
-      </div>
+      
 
       <div className={styles.contactCard}>
         <div className={styles.infoBox}>
@@ -32,6 +30,7 @@ function Contact() {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
     
   );

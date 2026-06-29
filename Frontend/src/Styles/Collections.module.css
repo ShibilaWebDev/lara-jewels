@@ -146,9 +146,19 @@
   }
 }
 @media (max-width: 600px) {
-  .productGrid {
-    grid-template-columns: 1fr;
+  .productInfo h3 {
+    font-size: 0.8rem;
   }
+
+  .price {
+    font-size: 0.8rem;
+  }
+
+
+  .header h1 {
+    font-size: 2.5rem;
+  }
+
   .header h1 {
     font-size: 2.5rem;
   }

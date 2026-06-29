@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { CiSearch } from "react-icons/ci";
 import { IoBagOutline } from "react-icons/io5";
 import styles from "../ComponetsStyles/navbar.module.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { CiLogin } from "react-icons/ci";
 import axios from "axios";
 //................
@@ -19,6 +19,13 @@ function Navbar() {
   const [search, setSearch] = useState("");
 
   const navTo = useNavigate();
+  const location = useLocation();
+
+useEffect(() => {
+  if (location.pathname === "/collections") {
+    setShowSearch(true);
+  }
+}, [location.pathname]);
   const handleLogout = async () => {
     const result = await Swal.fire({
       title: "Logout?",
@@ -50,10 +57,13 @@ function Navbar() {
     }
   };
   const handleSearch = () => {
-    if (!search.trim()) return;
+  if (!search.trim()) {
+    navTo("/collections");
+    return;
+  }
 
-    navTo(`/collections/${search.toLowerCase()}`);
-  };
+  navTo(`/collections?search=${search}`);
+};
   return (
     <div className={styles.navbar}>
       <div className={styles.logo}>
@@ -69,17 +79,24 @@ function Navbar() {
       </div>
       <div className={styles.iconSection}>
         <div className={styles.searchWrapper}>
-          <CiSearch
-            className={styles.searchIcon}
-            onClick={() => setShowSearch(!showSearch)}
-          />
+        <CiSearch
+  className={styles.searchIcon}
+  onClick={() => {
+    setShowSearch(true);
+    navTo("/collections");
+  }}
+/>
 
           {showSearch && (
             <input
               type="text"
               placeholder="Search products..."
               value={search}
-              onChange={(e) => setSearch(e.target.value)}
+           onChange={(e) => {
+  const value = e.target.value;
+  setSearch(value);
+  navTo(`/collections?search=${value}`);
+}}
               className={styles.searchInput}
               autoFocus
               onKeyDown={(e) => {

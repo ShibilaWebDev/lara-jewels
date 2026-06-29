@@ -234,11 +234,24 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
+
   .features {
-    flex-direction: column;
-    gap: 50px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 30px 2%;
   }
+
+  .featureBox svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .featureBox p {
+    font-size: 12px;
+  }
+
+
 
   .left h2 {
     font-size: 2.5rem;
@@ -252,4 +265,29 @@
   .inputBox {
     height: 70px;
   }
+}
+@media (max-width: 768px) {
+
+  .features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    padding: 40px 4%;
+  }
+
+  .featureBox {
+    gap: 10px;
+    text-align: center;
+  }
+
+  .featureBox svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .featureBox p {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
 }
