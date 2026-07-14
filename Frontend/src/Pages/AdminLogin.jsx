@@ -17,7 +17,7 @@ function AdminLogin() {
       const admin = { email, password };
 
       const res = await axios.post(
-        "http://localhost:3000/users/adminLogin",
+        `${import.meta.env.VITE_API_URL}/users/adminLogin`,
         admin,
         {
           withCredentials: true,

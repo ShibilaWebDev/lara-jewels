@@ -14,12 +14,12 @@ function AuthPageImages() {
       });
 
       const uploadRes = await axios.post(
-        "http://localhost:3000/auth-page/upload",
+        `${import.meta.env.VITE_API_URL}/auth-page/upload`,
         formData
       );
 
       await axios.put(
-        "http://localhost:3000/auth-page/login-images",
+        `${import.meta.env.VITE_API_URL}/auth-page/login-images`,
         {
           images: uploadRes.data,
         }

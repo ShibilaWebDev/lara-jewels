@@ -23,7 +23,7 @@ function Home() {
   const [featuredProducts, setFeaturedProducts] = useState([]);
   const [heroImage, setHeroImage] = useState("");
   const { addToCart } = useContext(CartContext);
-  const envUrl = import.meta.env.VITE_API_URL || "http://localhost:8080";
+  const envUrl = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     const fetchProducts = async () => {

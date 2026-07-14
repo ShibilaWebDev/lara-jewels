@@ -13,7 +13,7 @@ function HeroImage() {
       formData.append("heroImage", file);
 
       await axios.post(
-        "http://localhost:3000/hero-image/upload",
+        `${import.meta.env.VITE_API_URL}/hero-image/upload`,
         formData
       );
 

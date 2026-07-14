@@ -14,7 +14,7 @@ function Collections() {
   const [searchParams] = useSearchParams();
 const searchText = searchParams.get("search") || "";
   const navigate = useNavigate();
-  const envUrl = import.meta.env.VITE_API_URL || "http://localhost:8080";
+  const envUrl = import.meta.env.VITE_API_URL;
 useEffect(() => {
   window.scrollTo(0, 0);
 }, []);
@@ -124,7 +124,7 @@ console.log("Filtered products:", filteredProducts);
               <div onClick={()=>handleCategory(product._id,product)} key={product._id} className={styles.productCard} >
                 <div className={styles.imageContainer}>
                   <img src={imageSrc} alt={product.name}
-  onError={(e)=>e.target.src=`http://localhost:3000/uploads/noImage.png`}
+  onError={(e)=>e.target.src=`${envUrl}/uploads/noImage.png`}
                    />
                   {product.stock <= 0 && <span className={styles.badgeSoldOut}>Sold out</span>}
                   {product.offer > 0 && product.stock > 0 && <span className={styles.badgeSale}>Sale</span>}

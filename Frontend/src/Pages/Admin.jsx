@@ -27,7 +27,7 @@ function Admin() {
   const [users, setUsers] = useState([]);
   const getUsers = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/users/users");
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/users/users`);
       setUsers(res.data);
       setActive("users"); // show users section
     } catch (error) {
@@ -36,7 +36,7 @@ function Admin() {
   };
   const deleteUser = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/users/delete/${id}`);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/users/delete/${id}`);
 
       setUsers(users.filter((user) => user._id !== id));
     } catch (error) {
@@ -45,7 +45,7 @@ function Admin() {
   };
   const saveLoginImages = async () => {
     try {
-      await axios.put("http://localhost:3000/auth-page/login-images", {
+      await axios.put(`${import.meta.env.VITE_API_URL}/auth-page/login-images`, {
         images: loginImages,
       });
 
@@ -57,7 +57,7 @@ function Admin() {
 
   const saveSignupImages = async () => {
     try {
-      await axios.put("http://localhost:3000/auth-page/signup-images", {
+      await axios.put(`${import.meta.env.VITE_API_URL}/auth-page/signup-images`, {
         images: signupImages,
       });
 

@@ -213,12 +213,12 @@ const handleAddToCart = () => {
             <img
   src={
     product.imageUrl?.[0]?.startsWith("/uploads")
-      ? `http://localhost:3000${product.imageUrl[0]}`
+      ? `${import.meta.env.VITE_API_URL}${product.imageUrl[0]}`
       : product.imageUrl?.[0]
   }
   className={styles.productImage}
   alt={product.name}
-  onError={(e)=>e.target.src=`http://localhost:3000/uploads/noImage.png`}
+  onError={(e)=>e.target.src=`${import.meta.env.VITE_API_URL}/uploads/noImage.png`}
 /> </div>
 
           {/* Right Side Details */}

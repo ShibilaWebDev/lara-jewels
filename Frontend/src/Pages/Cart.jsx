@@ -12,7 +12,7 @@ function Cart() {
   const { cartItems, updateQuantity, removeFromCart, cartTotal } =
     useContext(CartContext);
   const navigate = useNavigate();
-  const envUrl = import.meta.env.VITE_API_URL || "http://localhost:8080";
+  const envUrl = import.meta.env.VITE_API_URL;
 
   const items = cartItems;
  
@@ -54,7 +54,7 @@ function Cart() {
                       alt={product.name}
                       className={styles.itemImage}
                       onError={(e) =>
-                        (e.target.src = `http://localhost:3000/uploads/noImage.png`)
+                        (e.target.src = `${envUrl}/uploads/noImage.png`)
                       }
                     />
 

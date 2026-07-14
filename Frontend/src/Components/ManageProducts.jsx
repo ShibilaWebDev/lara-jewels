@@ -186,7 +186,7 @@ function ManageProducts() {
             <img
               src={
                 product.imageUrl?.[0]?.startsWith("/uploads")
-                  ? `http://localhost:3000${product.imageUrl[0]}`
+                  ? `${envUrl}${product.imageUrl[0]}`
                   : product.imageUrl?.[0]
               }
               alt={product.name}
