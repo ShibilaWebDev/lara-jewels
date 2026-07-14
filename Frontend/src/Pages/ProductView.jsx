@@ -216,8 +216,8 @@ const handleAddToCart = () => {
       ? `${import.meta.env.VITE_API_URL}${product.imageUrl[0]}`
       : product.imageUrl?.[0]
   }
-  className={"https://lara-jewels-store.vercel.app"+styles.productImage}
-  alt={product.name}
+  className={styles.productImage}
+  alt={"https://lara-jewels-store.vercel.app"+product.name}
   onError={(e)=>e.target.src=`https://lara-jewels-store.vercel.app/uploads/1782636116762.jpg`}
 /> </div>
 
