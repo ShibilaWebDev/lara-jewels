@@ -218,7 +218,7 @@ const handleAddToCart = () => {
   }
   className={styles.productImage}
   alt={product.name}
-  onError={(e)=>e.target.src=`${import.meta.env.VITE_API_URL}/uploads/noImage.png`}
+  onError={(e)=>e.target.src="https://tribalornaments.com/cdn/shop/files/tribal-ornaments-default-title-round-shape-diamond-rose-gold-silver-ring-sr736-51244291555575.jpg?v=1768703516&width=1946"}
 /> </div>
 
           {/* Right Side Details */}
