@@ -59,7 +59,7 @@ async function login(req, res) {
 
     const token = jwt.sign({id:isEmail._id, email: user.email,role:isEmail.role }, process.env.SECRET_KEY,{expiresIn:"7d"})
     res
-      .cookie("token", token, { httpOnly: true, sameSite: "lax",expires:new  Date(Date.now()+6*24*60*60*1000)})
+      .cookie("token", token, { httpOnly: true, sameSite: "none", secure: true, expires:new  Date(Date.now()+6*24*60*60*1000)})
       .status(200)
       .json({ message: "token created", isLogin: true, token })
   } catch (err) {
@@ -102,7 +102,7 @@ async function adminLogin(req, res) {
 
     const token = jwt.sign({   id: isEmail._id,email: user.email,role:isEmail.role }, process.env.SECRET_KEY,{expiresIn:"120h"})
     res
-      .cookie("adminToken", token, { httpOnly: true, sameSite: "lax",expires:new  Date(Date.now()+7*24*60*60*1000)})
+      .cookie("adminToken", token, { httpOnly: true, sameSite: "none", secure: true, expires:new  Date(Date.now()+7*24*60*60*1000)})
       .status(200)
       .json({ message: "token created", isLogin: true, token })
   } catch (err) {
