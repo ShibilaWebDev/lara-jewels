@@ -11,7 +11,7 @@ const app = express()
 const cartRoutes = require("./routes/cartRoutes");
 const orderRoutes = require("./routes/orderRouter");
 const authPageRoutes = require("./routes/authPageRoutes");
-const heroImageRoutes = require("./Routes/heroImage");
+const heroImageRoutes = require("./routes/heroImage");
 
 const cors=require("cors")
 app.use(cors({origin:'http://localhost:5173',credentials: true}))
